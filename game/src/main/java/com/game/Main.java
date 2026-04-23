@@ -11,9 +11,9 @@ public class Main {
         Grimbane grimbane = new Grimbane();
         Combat combat = new Combat();
         GameEngine gameEngine = new GameEngine();
-        
-        System.out.println(Math.random());
-        ui.consoleUI();
+
+        //ui.consoleUI();
         gameEngine.startGame();
+       // gameEngine.grimbaneFight();
     }
 }

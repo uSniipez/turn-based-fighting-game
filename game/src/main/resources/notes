@@ -1,2 +1,7 @@
 #TODO Add name tag for each enenmy
 #TODO Add a turn counter
+
+
+
+while (player / grmbane above 0)
+grimbaneFight()

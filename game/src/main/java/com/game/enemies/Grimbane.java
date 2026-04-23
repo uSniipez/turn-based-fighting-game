@@ -2,7 +2,6 @@ package com.game.enemies;
 import com.game.Player;
 
 public class Grimbane {
-    Player player = new Player();
 
     final String grimbaneName = "Grimbane";
     public int grimbaneHP = 50;
@@ -28,30 +27,25 @@ public class Grimbane {
         }
         
         if (grimbaneHP - damage <= 0) {
-            System.out.println("Game Over: You died");
+            System.out.println("You win! Grimbane has been slain.");
             System.exit(0);
         }
             
-        grimbaneHP = (grimbaneHP - damage);
-        System.out.println(grimbaneHP);    
+        grimbaneHP = (grimbaneHP - damage);   
     }
     
     public void defend () {
         grimbaneShield = (grimbaneShield + grimbaneDefend);
     }
 
-    public void randomTurn() {
+    public void randomTurn(Player player) {
         double i = Math.random();
-        System.out.println("NUMBER GENERATED" + i);
         if (i < 0.5) {
             defend();
-            System.out.println("TEST: " + grimbaneShield);
             System.out.println("Grimbane is blocking for " + grimbaneDefend);
         }else{
-            player.takeDamage(grimbaneAttackDamage);
             System.out.println("Grimbane is attacking for " + grimbaneAttackDamage);
-            System.out.println("TEST: " + player.playerHP);
-
+            player.takeDamage(grimbaneAttackDamage);
         }
     }
 
