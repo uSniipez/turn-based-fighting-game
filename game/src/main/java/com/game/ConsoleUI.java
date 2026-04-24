@@ -21,9 +21,8 @@ public class ConsoleUI {
         System.out.println("Grimbane");
         System.out.println("HP: " + grimbane.getGrimbaneHP() + " | Shield: " + grimbane.getGrimbaneShield());
         System.out.println("Grimbane is attacking for " + grimbane.getGrimbaneAttackDamage() + " this turn" + "\n");
-
     }
-
+    
     public void chooseAction() {
         System.out.println("Choose an action:");
         System.out.println("(1). Attack for " + player.getPlayerAttackDamage());

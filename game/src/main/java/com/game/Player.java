@@ -1,12 +1,11 @@
 package com.game;
 
 public class Player {
-    public int playerHP = 50;
-    public int playerShield = 0;
-    public int playerAttackDamage = 10;
+    private int playerHP = 50;
+    private int playerShield = 0;
+    private int playerAttackDamage = 10;
     public int playerDefend = 8;
 
-    // for later use (min/max hp, damage uses shield first, etc)
     public int getPlayerHP() {return playerHP;}
     public int getPlayerShield() {return playerShield;}
     public int getPlayerAttackDamage() {return playerAttackDamage;}
@@ -16,30 +15,22 @@ public class Player {
     public void setPlayerAttackDamage(int playerAttackDamage) {this.playerAttackDamage = playerAttackDamage;}
     public void setPlayerDefend(int playerDefend) {this.playerDefend = playerDefend;}
     
-
-    //TODO Somehow it is possible for player to gain health
-    public void takeDamage(int damageSource) {
+    public void takeDamage(int damageSource) {     
         int damage = damageSource;
 
         if (playerShield > 0) { 
             damage = (damage - playerShield);
             playerShield = (playerShield - damageSource);
+
+            if (damage < 0) {damage = 0;}
             if (playerShield < 0) {playerShield = 0;}
         }
         
         if (playerHP - damage <= 0) {
-            System.out.println("Game Over: You died");
+            System.out.println("Game Over!");
+            System.out.println("You have been defeated.");
             System.exit(0);
         }
-        
-        /* 
-        if (damage > 0) {
-            playerHP = (playerHP - damage);
-            System.out.println(playerHP);
-        }
-        */
-       
-        //playerHP = (playerHP - damage);  
         setPlayerHP(playerHP - damage); 
     }
     

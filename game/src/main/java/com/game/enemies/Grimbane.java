@@ -4,10 +4,10 @@ import com.game.Player;
 public class Grimbane {
 
     final String grimbaneName = "Grimbane";
-    public int grimbaneHP = 50;
-    public int grimbaneShield = 0;
-    public int grimbaneAttackDamage = 5;
-    public int grimbaneDefend = 7;
+    private int grimbaneHP = 50;
+    private int grimbaneShield = 0;
+    private int grimbaneAttackDamage = 12;
+    private int grimbaneDefend = 7;
 
 
     // for later use (min/max hp, damage uses shield first, etc)
@@ -26,7 +26,9 @@ public class Grimbane {
         if (grimbaneShield > 0) { 
             damage = (damage - grimbaneShield);
             grimbaneShield = (grimbaneShield - damageSource);
-            if (grimbaneShield < 0) {grimbaneShield = 0;}
+
+            if (damage < 0) {damage = 0;}
+            if (grimbaneShield < 0) {grimbaneShield = 0;} 
         }
         
         if (grimbaneHP - damage <= 0) {
@@ -46,9 +48,22 @@ public class Grimbane {
         if (i < 0.5) {
             defend();
             System.out.println("Grimbane is blocking for " + grimbaneDefend);
-        }else{
+        } else {
             System.out.println("Grimbane is attacking for " + grimbaneAttackDamage);
             player.takeDamage(grimbaneAttackDamage);
+        }
+    }
+
+    public int randomTurn2() {
+        double i = Math.random();
+        if (i < 0.5) {
+            System.out.println("Grimbane is blocking for " + grimbaneDefend);
+            defend();
+            return 0;
+            
+        } else {
+            System.out.println("Grimbane is attacking for " + grimbaneAttackDamage);
+            return 1;
         }
     }
 
